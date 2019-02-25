@@ -9,7 +9,7 @@ var micBtn;
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext;
 context = new AudioContext();
-processor = context.createScriptProcessor(1024, 1, 1);
+processor = context.createScriptProcessor(4096, 1, 1);
 
 // Init & load
 document.addEventListener('DOMContentLoaded', function() {
@@ -77,49 +77,7 @@ function stopRecording() {
 	rec.stop();
 	gumStream.getAudioTracks()[0].stop();
 	console.log("getAudioTracks", gumStream.getAudioTracks()[0]);
-	// rec.exportWAV(createDownloadLink);
-	rec.exportWAV(function (blob) {
-		console.log("createDownloadLink")
-		var url = URL.createObjectURL(blob);
-		console.log("url", url);
-		var au = document.createElement('audio');
-		var li = document.querySelectorAll('.recorder-file')[0];
-		var link = document.createElement('a');
-		var filename = new Date().toISOString();
-
-		li.innerHTML = "";
-
-		au.controls = true;
-		au.src = url;
-
-		link.href = url;
-		link.download = filename+".wav";
-		link.innerHTML = "Save to disk";
-
-		li.appendChild(au);
-		li.appendChild(link);
-
-		console.log("li==html", li.innerHTML);
-		
-		//upload link
-		var upload = document.createElement('a');
-		upload.href="#";
-		upload.innerHTML = "Upload";
-		upload.addEventListener("click", function(event){
-			  var xhr=new XMLHttpRequest();
-			  xhr.onload=function(e) {
-			      if(this.readyState === 4) {
-			          console.log("Server returned: ",e.target.responseText);
-			      }
-			  };
-			  var fd=new FormData();
-			  fd.append("audio_data",blob, filename);
-			  xhr.open("POST","upload.php",true);
-			  xhr.send(fd);
-		})
-		li.appendChild(document.createTextNode (" "));
-		li.appendChild(upload);
-	});
+	rec.exportWAV(createDownloadLink);
 	console.log("rec", rec);
 }
 
@@ -135,6 +93,7 @@ function createDownloadLink(blob) {
 	li.innerHTML = "";
 
 	au.controls = true;
+	au.loop = true;
 	au.src = url;
 
 	link.href = url;
