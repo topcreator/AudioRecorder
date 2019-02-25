@@ -95,10 +95,7 @@ function createDownloadLink(blob) {
 	au.controls = true;
 	au.src = url;
 	au.onended = function() {
-		au.currentTime = 0
-		if (confirm("Do you want replay audio?")) {
-			au.play();
-		}
+		au.currentTime = 0;
 	}
 
 	link.href = url;
