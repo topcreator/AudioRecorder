@@ -1,7 +1,9 @@
 URL = window.URL || window.webkitURL;
 var wavesurfer, context, processor, clocker;
 var record_seconds = 0;
-var gumStream, rec, input;
+var gumStream;
+var rec;
+var input;
 var micBtn;
 
 var AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -70,9 +72,11 @@ function startRecording() {
 }
 
 function stopRecording() {
+	console.log("stopRecording");
 	micBtn.innerHTML = "Start recording...";
 	rec.stop();
 	gumStream.getAudioTracks()[0].stop();
+	console.log("getAudioTracks", getAudioTracks()[0]);
 	rec.exportWAV(createDownloadLink);
 }
 
