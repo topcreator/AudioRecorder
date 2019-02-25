@@ -76,8 +76,9 @@ function stopRecording() {
 	micBtn.innerHTML = "Start recording...";
 	rec.stop();
 	gumStream.getAudioTracks()[0].stop();
-	console.log("getAudioTracks", getAudioTracks()[0]);
+	console.log("getAudioTracks", gumStream.getAudioTracks()[0]);
 	rec.exportWAV(createDownloadLink);
+	console.log("rec", rec);
 }
 
 function createDownloadLink(blob) {
