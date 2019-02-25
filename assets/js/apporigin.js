@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Init wavesurfer
             wavesurfer = WaveSurfer.create({
                 container: '#waveform',
-                waveColor: 'black',
+                waveColor: '#026e00',
                 interact: false,
                 cursorWidth: 0,
                 audioContext: context || null,
@@ -77,8 +77,9 @@ function stopRecording() {
 }
 
 function createDownloadLink(blob) {
-	
+	console.log("createDownloadLink")
 	var url = URL.createObjectURL(blob);
+	console.log("url", url);
 	var au = document.createElement('audio');
 	var li = document.querySelectorAll('.recorder-file')[0];
 	var link = document.createElement('a');
@@ -95,6 +96,8 @@ function createDownloadLink(blob) {
 
 	li.appendChild(au);
 	li.appendChild(link);
+
+	console.log("li==html", li.innerHTML);
 	
 	//upload link
 	var upload = document.createElement('a');
