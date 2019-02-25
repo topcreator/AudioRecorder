@@ -1,0 +1,65 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.container {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+
+.recorder-wrapper {
+	width: 60%;
+}
+
+.recorder-wrapper #waveform {
+	width: 100%;
+	height: 128px;
+	min-height: 128px;
+	border: 1px solid #e1e1e1;
+}
+
+.recorder-wrapper h2 {
+	text-align: center;
+}
+
+.recorder-timer {
+	padding: 10px;
+}
+
+.recorder-controls {
+	text-align: center;
+}
+
+.recorder-controls #micBtn {
+	height: 50px;
+	min-width: 140px;
+	text-align: center;
+    background: red;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 0;
+    padding: 0;
+    outline: 0;
+}
+
+.recorder-file {
+	margin-top: 20px;
+}
+
+.recorder-file audio {
+	width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+	.recorder-wrapper {
+		width: 80%;
+	}
+}
