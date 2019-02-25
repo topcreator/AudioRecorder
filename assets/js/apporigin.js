@@ -93,8 +93,13 @@ function createDownloadLink(blob) {
 	li.innerHTML = "";
 
 	au.controls = true;
-	au.loop = true;
 	au.src = url;
+	au.onended = function() {
+		au.currentTime = 0
+		if (confirm("Do you want replay audio?")) {
+			au.play();
+		}
+	}
 
 	link.href = url;
 	link.download = filename+".wav";
